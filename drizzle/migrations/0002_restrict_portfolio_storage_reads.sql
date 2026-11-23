@@ -1,0 +1,2 @@
+drop policy if exists "Public reads portfolio images" on storage.objects;
+create policy "Admins read portfolio images" on storage.objects for select to authenticated using (bucket_id = 'portfolio' and public.has_role(auth.uid(), 'admin'));
