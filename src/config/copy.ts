@@ -53,7 +53,7 @@ export const COPY = {
     },
     marquee: "SITI VETRINA ✦ LANDING PAGE ✦ CURA CONTINUA ✦ SU MISURA ✦",
     services: {
-      kicker: "Campo 1", title: "Servizi", intro: "Quello che posso fare per la tua attività, dall'idea alla manutenzione.", open: "Scopri il servizio",
+      kicker: "Campo 1", title: "Servizi", intro: "Siti web, landing page, identità digitale e scheda Google Business per la tua attività a Varese e in tutta Italia: dall'idea alla manutenzione.", open: "Scopri il servizio",
       page: {
         forWho: "Per chi è",
         youGet: "Cosa ricevi",
@@ -260,7 +260,7 @@ export const COPY = {
     },
     marquee: "SHOWCASE SITES ✦ LANDING PAGES ✦ ONGOING CARE ✦ TAILOR-MADE ✦",
     services: {
-      kicker: "Camp 1", title: "Services", intro: "What I can do for your business, from idea to maintenance.", open: "Discover the service",
+      kicker: "Camp 1", title: "Services", intro: "Websites, landing pages, digital identity and Google Business Profile for your business in Varese and across Italy: from idea to maintenance.", open: "Discover the service",
       page: {
         forWho: "Who it's for",
         youGet: "What you get",

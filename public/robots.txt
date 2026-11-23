@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /reset-password
+Disallow: /unsubscribe
 
 Sitemap: https://peakstudio.click/sitemap.xml

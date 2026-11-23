@@ -58,8 +58,13 @@ const Hero = () => {
               </span>
               <span className={`ht-big ice-filter ${i === 0 ? "ice-text" : "ht-accent"}`}>
                 {big}
-                <span className="ht-dot">.</span>
+                <svg aria-hidden className="ht-peak" viewBox="0 0 40 32"><path d="M2 30 L15 7 L23 19 L29 11 L38 30 Z" /></svg>
               </span>
+              {i === 1 && (
+                <svg aria-hidden className="ht-ridge" viewBox="0 0 600 40" preserveAspectRatio="none">
+                  <path pathLength="1" d="M0 34 L70 12 L120 28 L190 6 L250 30 L320 14 L380 32 L450 8 L520 28 L600 16" />
+                </svg>
+              )}
             </span>
           ))}
         </h1>

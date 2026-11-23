@@ -11,7 +11,7 @@ import { useCopy } from "@/config/copy";
 import { CASI_PORTFOLIO, SERVIZI } from "@/config/site";
 import { SERVIZI_DETTAGLIO } from "@/config/servizi-dettaglio";
 import { APPROFONDIMENTI } from "@/config/servizi-approfondimenti";
-import { usePageMeta } from "@/hooks/peak";
+import { useJsonLd, usePageMeta } from "@/hooks/peak";
 
 const ServicePage = () => {
   const { id } = useParams();
@@ -19,6 +19,17 @@ const ServicePage = () => {
   const s = SERVIZI.find((x) => x.id === id);
   const d = SERVIZI_DETTAGLIO.find((x) => x.id === id);
   usePageMeta(s ? `${s.titolo[lang]} | Peak Studio` : undefined, d?.sub[lang]);
+  useJsonLd(`service-${id}`, s && d ? {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "Service", name: s.titolo[lang], description: d.sub[lang], provider: { "@id": "https://peakstudio.click/#business" }, areaServed: [{ "@type": "AdministrativeArea", name: "Provincia di Varese" }, { "@type": "Country", name: "Italia" }], url: `https://peakstudio.click/servizi/${s.id}` },
+      { "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Peak Studio", item: "https://peakstudio.click/" },
+        { "@type": "ListItem", position: 2, name: lang === "en" ? "Services" : "Servizi", item: "https://peakstudio.click/#servizi" },
+        { "@type": "ListItem", position: 3, name: s.titolo[lang], item: `https://peakstudio.click/servizi/${s.id}` },
+      ] },
+    ],
+  } : null);
   useEffect(() => { window.scrollTo(0, 0); }, [id]);
   if (!s || !d) return <Navigate to="/404" replace />;
 
@@ -36,7 +47,7 @@ const ServicePage = () => {
         <section className={`${d.zone} relative overflow-hidden pb-16 pt-28 md:pb-24 md:pt-40`}>
           <div aria-hidden className="tech-grid" />
           {d.layout === "overlay" && (
-            <img src={s.img} alt="" width={1024} height={768} className="absolute inset-0 h-full w-full object-cover opacity-30" />
+            <img src={s.img} alt="" width={1600} height={700} className="absolute inset-0 h-full w-full object-cover opacity-30" />
           )}
           <div className="wrap relative">
             <nav aria-label="Breadcrumb" className="hud mb-8 flex flex-wrap items-center gap-2 text-muted-foreground">
@@ -57,14 +68,14 @@ const ServicePage = () => {
               </div>
               {d.layout === "split" && (
                 <div className="svc-hero-frame">
-                  <img src={s.img} alt={s.titolo[lang]} width={1024} height={768} className="h-full w-full object-cover" />
+                  <img src={s.img} alt={s.titolo[lang]} width={1600} height={700} className="h-full w-full object-cover" />
                   <span className="svc-hero-tag hud"><Icon aria-hidden className="h-4 w-4" /> {s.titolo[lang]}</span>
                 </div>
               )}
             </div>
             {(d.layout === "center" || d.layout === "stack") && (
               <div className="svc-hero-wide mt-12">
-                <img src={s.img} alt={s.titolo[lang]} width={1024} height={768} className="h-full w-full object-cover" />
+                <img src={s.img} alt={s.titolo[lang]} width={1600} height={700} className="h-full w-full object-cover" />
               </div>
             )}
           </div>
@@ -176,7 +187,7 @@ const ServicePage = () => {
             ) : (
               <figure className="pc-window mx-auto max-w-4xl">
                 <div className="pc-bar"><i /><i /><i /><span className="pc-url">{t.mock}</span></div>
-                <div className="pc-shot !aspect-[16/8]"><img src={s.img} alt={`${t.mock}: ${s.titolo[lang]}`} width={1024} height={768} loading="lazy" /></div>
+                <div className="pc-shot !aspect-[16/8]"><img src={s.img} alt={`${t.mock}: ${s.titolo[lang]}`} width={1600} height={700} loading="lazy" /></div>
               </figure>
             )}
           </div>

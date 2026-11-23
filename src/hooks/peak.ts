@@ -113,3 +113,17 @@ export const scrollToId = (id: string) => {
   if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
   (el as HTMLElement).focus({ preventScroll: true });
 };
+
+/** Dati strutturati per i motori di ricerca (JSON-LD): aggiunge uno <script> mentre la pagina è aperta. */
+export const useJsonLd = (key: string, data: object | null) => {
+  const json = data ? JSON.stringify(data) : "";
+  useEffect(() => {
+    if (!json) return;
+    const el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.dataset.seo = key;
+    el.text = json;
+    document.head.appendChild(el);
+    return () => { el.remove(); };
+  }, [key, json]);
+};

@@ -194,19 +194,24 @@
 @keyframes shake { 25% { transform: translate(2px,-1px); } 50% { transform: translate(-2px,1px); } 75% { transform: translate(1px,2px); } }
 
 /* ===== Restyling: titolo hero ===== */
-.hero-title { font-family: "Bricolage Grotesque Variable", system-ui, sans-serif; text-transform: uppercase; line-height: .86; letter-spacing: -0.045em; }
-.ht-row { display: flex; align-items: flex-end; gap: clamp(.6rem, 1.6vw, 1.5rem); animation: ht-in 1s cubic-bezier(.2,.8,.2,1) both; }
-.ht-row-2 { padding-left: clamp(0rem, 9vw, 9rem); margin-top: .08em; }
+.hero-title { font-family: "Archivo Black", "Bricolage Grotesque Variable", system-ui, sans-serif; text-transform: uppercase; line-height: .9; letter-spacing: -0.01em; }
+.ht-row { position: relative; display: flex; align-items: flex-end; gap: clamp(.6rem, 1.6vw, 1.5rem); animation: ht-in 1s cubic-bezier(.2,.8,.2,1) both; }
+.ht-row-2 { padding-left: clamp(0rem, 7vw, 7rem); margin-top: .12em; padding-bottom: .22em; }
 .ht-small { display: flex; flex-direction: column; gap: .4rem; padding-bottom: .9em; font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: clamp(.8rem, 1.4vw, 1.15rem); letter-spacing: .14em; color: hsl(var(--muted-foreground)); white-space: nowrap; }
 .ht-index { display: inline-block; width: fit-content; padding: 1px 6px; border: 1px solid hsl(var(--glacier-700)); color: hsl(var(--glacier-700)); font-size: .75em; }
-.ht-big { font-weight: 800; font-size: clamp(3rem, 10vw, 9.5rem); }
-.ht-accent { color: transparent; -webkit-text-stroke: 2px hsl(var(--glacier-700)); background: linear-gradient(90deg, hsl(var(--glacier-700)) 0 0) no-repeat 0 100% / 0% 100%; -webkit-background-clip: text; background-clip: text; animation: ht-fill 1.6s .9s cubic-bezier(.6,0,.2,1) forwards; }
-.ht-dot { color: hsl(var(--cyan)); -webkit-text-fill-color: hsl(var(--cyan)); -webkit-text-stroke: 0; display: inline-block; animation: ht-blink 1.2s steps(2) 2.6s 3; }
+.ht-big { font-weight: 400; font-size: clamp(2.7rem, 8.4vw, 8.4rem); }
+/* la parola "sale" dal basso come una scalata: da contorno a pieno colore */
+.ht-accent { color: transparent; -webkit-text-stroke: 2px hsl(var(--glacier-700)); background: linear-gradient(0deg, hsl(var(--glacier-700)) 0%, hsl(var(--cyan)) 100%) no-repeat 0 100% / 100% 0%; -webkit-background-clip: text; background-clip: text; animation: ht-rise 1.6s .9s cubic-bezier(.6,0,.2,1) forwards; }
+.ht-peak { display: inline-block; width: .42em; height: .34em; margin-left: .06em; vertical-align: baseline; fill: hsl(var(--cyan)); stroke: hsl(var(--glacier-700)); stroke-width: 2; stroke-linejoin: round; -webkit-text-fill-color: initial; animation: ht-float 3s ease-in-out 1.4s infinite; }
+.ht-ridge { position: absolute; left: clamp(0rem, 7vw, 7rem); bottom: 0; width: min(78%, 46rem); height: .2em; font-size: clamp(2.7rem, 8.4vw, 8.4rem); overflow: visible; }
+.ht-ridge path { fill: none; stroke: hsl(var(--cyan)); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; animation: ht-draw 1.4s 1.6s cubic-bezier(.6,0,.2,1) forwards; }
 @keyframes ht-in { from { transform: translateY(.35em) skewY(3deg); } to { transform: none; } }
-@keyframes ht-fill { to { background-size: 100% 100%; } }
+@keyframes ht-rise { to { background-size: 100% 100%; } }
+@keyframes ht-draw { to { stroke-dashoffset: 0; } }
+@keyframes ht-float { 50% { transform: translateY(-.06em); } }
 @keyframes ht-blink { 50% { opacity: 0; } }
-@media (max-width: 640px) { .ht-row { flex-direction: column; align-items: flex-start; gap: .2rem; } .ht-small { flex-direction: row; padding-bottom: 0; } .ht-row-2 { padding-left: 0; margin-top: .25em; } }
-@media (prefers-reduced-motion: reduce) { .ht-accent { background-size: 100% 100%; animation: none; } }
+@media (max-width: 640px) { .ht-row { flex-direction: column; align-items: flex-start; gap: .2rem; } .ht-small { flex-direction: row; padding-bottom: 0; } .ht-row-2 { padding-left: 0; margin-top: .25em; } .ht-ridge { left: 0; width: 70%; } }
+@media (prefers-reduced-motion: reduce) { .ht-accent { background-size: 100% 100%; animation: none; } .ht-peak { animation: none; } .ht-ridge path { animation: none; stroke-dashoffset: 0; } }
 
 /* lente del vetro */
 .frost-lens { position: absolute; left: 0; top: 0; width: 200px; height: 200px; border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity .4s; z-index: 0;
@@ -375,4 +380,5 @@
 @media (max-width: 767px) {
   html[data-cookie="open"] #top { padding-bottom: 12rem; }
   html[data-cookie="open"] .wa-fab { bottom: 11.5rem; }
+  html[data-cookie="open"] .alt-mobile { bottom: 11.5rem; }
 }

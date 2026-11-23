@@ -34,7 +34,7 @@ export const ServiceCard = ({ id, i, title, desc, img, cta, big = false }: { id:
       className={`svc-card group ${big ? "svc-card-big" : ""}`}
     >
       <div className="svc-media">
-        <img src={img} alt="" width={1024} height={768} loading="lazy" decoding="async" className="svc-img" />
+        <img src={img} alt="" width={1600} height={700} loading="lazy" decoding="async" className="svc-img" />
         <span className="svc-num hud">S-{String(i + 1).padStart(2, "0")}</span>
         <span className="svc-icon"><Icon aria-hidden className="h-4 w-4" /></span>
       </div>

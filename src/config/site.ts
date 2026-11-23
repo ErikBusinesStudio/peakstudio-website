@@ -233,16 +233,17 @@ export const stimaMensile = (contatti: number, valoreCliente: number, suDieci: n
 
 /** Tappe dell'altimetro, nello stesso ordine delle sezioni. */
 export const CAMPI = [
-  { id: "top", quota: 0, nome: { it: "Campo base", en: "Base camp" } },
-  { id: "fiducia", quota: 400, nome: { it: "Morena", en: "Moraine" } },
-  { id: "disgelo", quota: 900, nome: { it: "Il disgelo", en: "The thaw" } },
-  { id: "servizi", quota: 1400, nome: { it: "Campo 1 · Servizi", en: "Camp 1 · Services" } },
-  { id: "processo", quota: 1900, nome: { it: "Campo 2 · Processo", en: "Camp 2 · Process" } },
-  { id: "lavori", quota: 2400, nome: { it: "Campo 3 · Lavori", en: "Camp 3 · Work" } },
-  { id: "prezzi", quota: 2900, nome: { it: "Campo 4 · Prezzi", en: "Camp 4 · Pricing" } },
-  { id: "chi-sono", quota: 3300, nome: { it: "Cresta · Chi sono", en: "Ridge · Who I am" } },
-  { id: "faq", quota: 3700, nome: { it: "Anticima · FAQ", en: "Fore-summit · FAQ" } },
-  { id: "contatti", quota: 4000, nome: { it: "Vetta · Contatti", en: "Summit · Contact" } },
+  { id: "top", quota: 0, nome: { it: "Campo base", en: "Base camp" }, label: { it: "Inizio", en: "Start" } },
+  { id: "fiducia", quota: 400, nome: { it: "Morena", en: "Moraine" }, label: { it: "In breve", en: "At a glance" } },
+  { id: "disgelo", quota: 900, nome: { it: "Il disgelo", en: "The thaw" }, label: { it: "Calcolatore", en: "Calculator" } },
+  { id: "servizi", quota: 1400, nome: { it: "Campo 1 · Servizi", en: "Camp 1 · Services" }, label: { it: "Servizi", en: "Services" } },
+  { id: "processo", quota: 1900, nome: { it: "Campo 2 · Processo", en: "Camp 2 · Process" }, label: { it: "Come lavoro", en: "How I work" } },
+  { id: "lavori", quota: 2400, nome: { it: "Campo 3 · Lavori", en: "Camp 3 · Work" }, label: { it: "Lavori", en: "Work" } },
+  { id: "recensioni", quota: 2650, nome: { it: "Recensioni", en: "Reviews" }, label: { it: "Recensioni", en: "Reviews" } },
+  { id: "prezzi", quota: 2900, nome: { it: "Campo 4 · Prezzi", en: "Camp 4 · Pricing" }, label: { it: "Prezzi", en: "Pricing" } },
+  { id: "chi-sono", quota: 3300, nome: { it: "Cresta · Chi sono", en: "Ridge · Who I am" }, label: { it: "Chi sono", en: "About" } },
+  { id: "faq", quota: 3700, nome: { it: "Anticima · FAQ", en: "Fore-summit · FAQ" }, label: { it: "Domande", en: "FAQ" } },
+  { id: "contatti", quota: 4000, nome: { it: "Vetta · Contatti", en: "Summit · Contact" }, label: { it: "Contatti", en: "Contact" } },
 ] as const;
 
 export const QUOTA_MAX = 4000;
