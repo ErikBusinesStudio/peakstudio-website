@@ -1,7 +1,9 @@
 import { useI18n } from "@/contexts/I18nContext";
-import { GIORNI_CONSEGNA } from "./site";
+import { GIORNI_CONSEGNA, MANUTENZIONE, PIANI } from "./site";
 
 const g = GIORNI_CONSEGNA;
+const da = PIANI[0].prezzoDa;
+const man = MANUTENZIONE.prezzoMese;
 
 export const COPY = {
   it: {
@@ -129,17 +131,40 @@ export const COPY = {
       goal: "L'obiettivo: strumenti digitali utili, curati e funzionali per le attività con cui collaboro.",
       nodes: ["Idea", "Ascolto", "Struttura", "Design", "Sviluppo", "Online"],
     },
+    reviews: {
+      kicker: "Parlano di me",
+      title: "Recensioni",
+      intro: "Solo opinioni vere di chi ha lavorato con me. Prima di comparire qui, ogni recensione viene controllata da me.",
+      empty: "Le prime recensioni arriveranno a breve. Hai lavorato con me? Scrivi la tua qui sotto.",
+      formTitle: "Hai lavorato con me?",
+      formIntro: "Lascia la tua opinione: ti basta un minuto.",
+      name: "Il tuo nome",
+      role: "La tua attività",
+      rating: "Voto",
+      star: (n: number) => `${n} ${n === 1 ? "stella" : "stelle"} su 5`,
+      text: "La tua recensione",
+      consent: "Accetto che nome, attività e recensione vengano pubblicati sul sito dopo il controllo.",
+      send: "Invia la recensione",
+      sending: "Invio in corso",
+      ok: "Grazie! La recensione è stata inviata: la leggo e la pubblico a breve.",
+      err: "Invio non riuscito. Riprova tra poco.",
+      invalid: "Inserisci nome e recensione e accetta la pubblicazione.",
+      also: "Puoi lasciarla anche qui",
+      google: "Recensione su Google",
+      trustpilot: "Recensione su Trustpilot",
+      outbound: "si apre in una nuova scheda",
+    },
     faq: {
       kicker: "Anticima",
       title: "Domande frequenti",
       items: [
-        { q: "Quanto tempo serve?", a: `Consegno il sito entro ${g} giorni da quando ricevo tutto il materiale (testi, foto, logo).` },
-        { q: "Quanto costa?", a: "Parti da 390 € per un sito a pagina singola. Dopo una breve chiacchierata ti mando un preventivo preciso, senza sorprese." },
-        { q: "Cosa serve da me?", a: "Testi di base, foto e logo se li hai. Se mancano, ti aiuto io a prepararli." },
-        { q: "Dominio ed email?", a: "Registro il dominio a nome tuo e configuro le email professionali. Restano tuoi per sempre. Paghi il costo reale del dominio più 30 € l'anno di gestione." },
-        { q: "Chi fa le modifiche dopo la consegna?", a: "Le faccio io: mi scrivi cosa cambiare e lo sistemo." },
-        { q: "Cosa include la manutenzione?", a: "Aggiornamenti grafici e tecnici, backup mensile su server esterno, scansione di sicurezza e, se vuoi, un recap delle visite." },
-        { q: "Come funziona il pagamento?", a: "30% alla conferma e 70% alla consegna. Le condizioni sono scritte nel preventivo." },
+        { q: "Quanto tempo serve?", chip: `${g} giorni`, a: `Consegno il sito entro ${g} giorni da quando ricevo tutto il materiale (testi, foto, logo).` },
+        { q: "Quanto costa?", chip: `da ${da} €`, a: "Parti da 390 € per un sito a pagina singola. Dopo una breve chiacchierata ti mando un preventivo preciso, senza sorprese." },
+        { q: "Cosa serve da me?", chip: "Testi e foto", a: "Testi di base, foto e logo se li hai. Se mancano, ti aiuto io a prepararli." },
+        { q: "Dominio ed email?", chip: "+30 € l'anno", a: "Registro il dominio a nome tuo e configuro le email professionali. Restano tuoi per sempre. Paghi il costo reale del dominio più 30 € l'anno di gestione." },
+        { q: "Chi fa le modifiche dopo la consegna?", chip: "Le faccio io", a: "Le faccio io: mi scrivi cosa cambiare e lo sistemo." },
+        { q: "Cosa include la manutenzione?", chip: `${man} €/mese`, a: "Aggiornamenti grafici e tecnici, backup mensile su server esterno, scansione di sicurezza e, se vuoi, un recap delle visite." },
+        { q: "Come funziona il pagamento?", chip: "30% + 70%", a: "30% alla conferma e 70% alla consegna. Le condizioni sono scritte nel preventivo." },
       ],
     },
     contact: {
@@ -313,17 +338,40 @@ export const COPY = {
       goal: "The goal: useful, polished and functional digital tools for the businesses I work with.",
       nodes: ["Idea", "Listening", "Structure", "Design", "Build", "Live"],
     },
+    reviews: {
+      kicker: "What clients say",
+      title: "Reviews",
+      intro: "Only genuine opinions from people who worked with me. Every review is checked by me before it appears here.",
+      empty: "The first reviews are on their way. Worked with me? Write yours below.",
+      formTitle: "Worked with me?",
+      formIntro: "Leave your opinion: it only takes a minute.",
+      name: "Your name",
+      role: "Your business",
+      rating: "Rating",
+      star: (n: number) => `${n} ${n === 1 ? "star" : "stars"} out of 5`,
+      text: "Your review",
+      consent: "I agree that my name, business and review are published on the site after checking.",
+      send: "Send review",
+      sending: "Sending",
+      ok: "Thank you! Your review was sent: I'll read it and publish it shortly.",
+      err: "Could not send. Please try again shortly.",
+      invalid: "Enter your name and review and accept publication.",
+      also: "You can also leave it here",
+      google: "Review on Google",
+      trustpilot: "Review on Trustpilot",
+      outbound: "opens in a new tab",
+    },
     faq: {
       kicker: "Fore-summit",
       title: "FAQ",
       items: [
-        { q: "How long does it take?", a: `I deliver the site within ${g} days of receiving all the material (texts, photos, logo).` },
-        { q: "How much does it cost?", a: "From €390 for a single-page site. After a short chat I send you a precise quote, with no surprises." },
-        { q: "What do you need from me?", a: "Basic texts, photos and your logo if you have one. If not, I'll help you prepare them." },
-        { q: "Domain and email?", a: "I register the domain in your name and set up business email. They stay yours forever. You pay the actual domain cost plus €30 a year for management." },
-        { q: "Who makes changes after delivery?", a: "I do: tell me what to change and I'll sort it." },
-        { q: "What does maintenance include?", a: "Design and technical updates, monthly backup on an external server, a security scan and, if you want, a visits recap." },
-        { q: "How does payment work?", a: "30% on confirmation and 70% on delivery. Terms are written in the quote." },
+        { q: "How long does it take?", chip: `${g} days`, a: `I deliver the site within ${g} days of receiving all the material (texts, photos, logo).` },
+        { q: "How much does it cost?", chip: `from €${da}`, a: "From €390 for a single-page site. After a short chat I send you a precise quote, with no surprises." },
+        { q: "What do you need from me?", chip: "Texts and photos", a: "Basic texts, photos and your logo if you have one. If not, I'll help you prepare them." },
+        { q: "Domain and email?", chip: "+€30 a year", a: "I register the domain in your name and set up business email. They stay yours forever. You pay the actual domain cost plus €30 a year for management." },
+        { q: "Who makes changes after delivery?", chip: "I do them", a: "I do: tell me what to change and I'll sort it." },
+        { q: "What does maintenance include?", chip: `€${man}/month`, a: "Design and technical updates, monthly backup on an external server, a security scan and, if you want, a visits recap." },
+        { q: "How does payment work?", chip: "30% + 70%", a: "30% on confirmation and 70% on delivery. Terms are written in the quote." },
       ],
     },
     contact: {

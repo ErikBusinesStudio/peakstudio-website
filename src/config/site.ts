@@ -125,11 +125,10 @@ export type Addon = {
 export const ADDON: Addon[] = [
   { id: "gbp", cat: "visibilita", prezzo: 40, nome: { it: "Scheda Google Business", en: "Google Business Profile" }, desc: { it: "Ti trovano su Maps con orari, foto e indicazioni.", en: "Be found on Maps with hours, photos and directions." } },
   { id: "analytics", cat: "visibilita", prezzo: 60, nome: { it: "Statistiche e conversioni", en: "Analytics and conversions" }, desc: { it: "Sai quante persone ti trovano e quante ti contattano.", en: "Know how many people find you and how many get in touch." } },
-  { id: "lingua", cat: "contenuti", prezzo: 90, inclusoIn: ["business"], nome: { it: "Lingua aggiuntiva", en: "Extra language" }, desc: { it: "Il sito anche in un'altra lingua per chi arriva da fuori.", en: "The site in another language for visitors from abroad." } },
+  { id: "lingua", cat: "contenuti", prezzo: 30, inclusoIn: ["business"], nome: { it: "Lingua aggiuntiva", en: "Extra language" }, desc: { it: "Il sito anche in un'altra lingua per chi arriva da fuori.", en: "The site in another language for visitors from abroad." } },
   { id: "foto", cat: "contenuti", prezzo: 40, nome: { it: "Selezione immagini", en: "Image selection" }, desc: { it: "Scelgo e preparo immagini adatte alla tua attività.", en: "I pick and prepare images that suit your business." } },
   { id: "prenotazioni", cat: "funzioni", prezzo: 150, inclusoIn: ["premium"], nome: { it: "Prenotazioni online", en: "Online bookings" }, desc: { it: "Appuntamenti e richieste senza telefonate.", en: "Appointments and requests without phone calls." } },
   { id: "moduli", cat: "funzioni", prezzo: 90, nome: { it: "Moduli di preventivo", en: "Quote request forms" }, desc: { it: "Domande guidate che ti portano richieste già complete.", en: "Guided questions that bring you complete requests." } },
-  { id: "migrazione", cat: "crescita", prezzo: 150, nome: { it: "Migrazione dal vecchio sito", en: "Migration from your old site" }, desc: { it: "Porto contenuti e indirizzo senza perdere nulla.", en: "I move content and address without losing anything." } },
   { id: "automazioni", cat: "crescita", prezzo: 190, nome: { it: "Automazioni e CRM", en: "Automations and CRM" }, desc: { it: "Le richieste arrivano dove lavori già, senza copia-incolla.", en: "Requests land where you already work, no copy-paste." } },
 ];
 
@@ -150,7 +149,7 @@ export const totalePreventivo = (pianoId: string, addonIds: string[]) => {
 /** Identità digitale: nome, logo e immagine coordinata. Prezzi di partenza (IVA esclusa se dovuta). */
 export type PacchettoIdentita = { id: string; nome: L; prezzoDa: number; include: L[] };
 export const IDENTITA: PacchettoIdentita[] = [
-  { id: "nome", nome: { it: "Nome e dominio", en: "Name and domain" }, prezzoDa: 90, include: [
+  { id: "nome", nome: { it: "Nome e dominio", en: "Name and domain" }, prezzoDa: 30, include: [
     { it: "Ricerca del nome per la tua attività", en: "Name research for your business" },
     { it: "Verifica della disponibilità del dominio", en: "Domain availability check" },
   ] },
@@ -218,6 +217,12 @@ export const CASI_PORTFOLIO: Caso[] = [
   { id: "adhd", nome: "ADHD e Biscotti", settore: { it: "Divulgazione e blog", en: "Awareness and blog" }, fatto: { it: "Sito su misura con blog, guida e area riservata", en: "Custom site with blog, guide and members area" }, anno: null, img: workAdhd, url: "https://adhdebiscotti.it", categoria: "personalizzati" },
   { id: "crv", nome: "CRV · Centro Revisioni Valcuvia", settore: { it: "Revisioni e officina", en: "Vehicle inspections and garage" }, fatto: { it: "Sito dei servizi bilingue con galleria", en: "Bilingual services site with gallery" }, anno: null, img: workEvent, url: "https://eventmotorsport.com", categoria: "professionali" },
 ];
+
+/** Link per lasciare una recensione fuori dal sito. Lascia "" finché non hai la pagina: il link non compare. */
+export const RECENSIONI = {
+  google: "",
+  trustpilot: "",
+};
 
 /** Vuoto finché non arrivano recensioni reali: la sezione resta nascosta. */
 export const TESTIMONIANZE: { nome: string; attivita: string; testo: L }[] = [];

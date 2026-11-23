@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BarChart3, ChevronDown, Check, Globe2, ImageIcon, Languages, MapPin, Repeat, CalendarCheck, ClipboardList, Workflow } from "lucide-react";
+import { BarChart3, ChevronDown, Check, Globe2, ImageIcon, Languages, MapPin, CalendarCheck, ClipboardList, Workflow } from "lucide-react";
 import { useCopy } from "@/config/copy";
 import { ADDON, ADDON_CATEGORIE, DATI_LEGALI, IDENTITA, MANUTENZIONE, PIANI, totalePreventivo } from "@/config/site";
 import SectionHead from "./SectionHead";
@@ -8,7 +8,7 @@ import Cta from "./Cta";
 const eur = (n: number | null | undefined) => (n == null ? "" : `${n.toLocaleString("it-IT")} €`);
 const ADDON_ICONS: Record<string, typeof Check> = {
   gbp: MapPin, analytics: BarChart3, lingua: Languages, foto: ImageIcon,
-  prenotazioni: CalendarCheck, moduli: ClipboardList, migrazione: Repeat, automazioni: Workflow,
+  prenotazioni: CalendarCheck, moduli: ClipboardList, automazioni: Workflow,
 };
 
 const Pricing = () => {

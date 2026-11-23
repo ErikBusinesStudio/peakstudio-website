@@ -17,12 +17,11 @@ import WhatsAppFab from "@/components/peak/WhatsAppFab";
 import Crevasse from "@/components/peak/fx/Crevasse";
 import Marquee from "@/components/peak/fx/Marquee";
 import Preloader from "@/components/peak/fx/Preloader";
-import { TESTIMONIANZE } from "@/config/site";
 import { isFinePointer, useReducedMotion, usePageMeta } from "@/hooks/peak";
 
 const Cursor = lazy(() => import("@/components/peak/fx/Cursor"));
 const Avalanche = lazy(() => import("@/components/peak/fx/Avalanche"));
-const Testimonials = lazy(() => import("@/components/peak/Testimonials"));
+const Reviews = lazy(() => import("@/components/peak/Reviews"));
 
 const Index = () => {
   usePageMeta();
@@ -52,11 +51,9 @@ const Index = () => {
         <Process />
         <Crevasse from="zone-snow" to="zone-mid" />
         <Works />
-        {TESTIMONIANZE.length > 0 && (
-          <Suspense fallback={null}>
-            <Testimonials />
-          </Suspense>
-        )}
+        <Suspense fallback={null}>
+          <Reviews />
+        </Suspense>
         <Pricing />
         <Crevasse from="zone-mid" to="zone-deep" />
         <Me />

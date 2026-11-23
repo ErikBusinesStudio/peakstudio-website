@@ -19,10 +19,10 @@ describe("regole sito Peak Studio", () => {
   it("manutenzione 60 €/mese", () => expect(MANUTENZIONE.prezzoMese).toBe(60));
   it("ogni aggiunta ha un prezzo e SEO, testi e newsletter non ci sono", () => {
     expect(ADDON.every((a) => a.prezzo != null)).toBe(true);
-    expect(ADDON.some((a) => ["seo", "copy", "newsletter"].includes(a.id))).toBe(false);
+    expect(ADDON.some((a) => ["seo", "copy", "newsletter", "migrazione"].includes(a.id))).toBe(false);
   });
-  it("identità digitale: nome 90, logo 150, coordinata 290, completa 590", () =>
-    expect(IDENTITA.map((x) => x.prezzoDa)).toEqual([90, 150, 290, 590]));
+  it("identità digitale: nome e dominio 30, logo 150, coordinata 290, completa 590", () =>
+    expect(IDENTITA.map((x) => x.prezzoDa)).toEqual([30, 150, 290, 590]));
   it("scheda Google Business 40 €", () => expect(ADDON[0].prezzo).toBe(40));
   it("stima = a × (c/10) × b", () => expect(stimaMensile(20, 150, 3)).toBe(900));
   it("nessuna testimonianza inventata", () => expect(TESTIMONIANZE).toHaveLength(0));
@@ -35,4 +35,8 @@ describe("regole sito Peak Studio", () => {
     expect(isValidReach("+39 333 1234567")).toBe(true);
     expect(isValidReach("ciao")).toBe(false);
   });
+});
+
+describe("aggiunte", () => {
+  it("lingua aggiuntiva costa 30 €", () => expect(ADDON.find((a) => a.id === "lingua")?.prezzo).toBe(30));
 });
