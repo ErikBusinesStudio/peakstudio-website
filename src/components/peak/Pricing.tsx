@@ -27,13 +27,13 @@ const Pricing = () => {
         <SectionHead id="prezzi" kicker={c.pricing.kicker} quota={2900} title={c.pricing.title} intro={c.pricing.intro} />
         <ul className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
           {PIANI.map((p) => (
-            <li key={p.id} className={`surface relative flex flex-col p-6 md:p-8 ${p.consigliato ? "ring-2 ring-[hsl(var(--cyan))]" : ""}`}>
+            <li key={p.id} className={`surface relative flex min-w-0 flex-col p-6 md:p-8 xl:p-6 ${p.consigliato ? "ring-2 ring-[hsl(var(--cyan))]" : ""}`}>
               {p.consigliato && (
                 <span className="hud absolute -top-3 left-6 rounded-full bg-[hsl(var(--cyan))] px-3 py-1 font-semibold text-[hsl(var(--deep-900))]">
                   {c.pricing.recommended}
                 </span>
               )}
-              <h3 className="font-display text-3xl font-extrabold tracking-tight">{p.nome}</h3>
+              <h3 className="font-display text-3xl font-extrabold tracking-tight xl:text-[1.65rem]">{p.nome}</h3>
               {p.prezzoDa != null ? (
                 <p className="mt-4">
                   <span className="hud text-muted-foreground">{c.pricing.from} </span>
@@ -41,7 +41,7 @@ const Pricing = () => {
                 </p>
               ) : (
                 <div className="mt-4">
-                  <p className="font-display text-3xl font-extrabold leading-tight tracking-tight">{c.pricing.custom}</p>
+                  <p className="font-display text-3xl font-extrabold leading-tight tracking-tight [overflow-wrap:anywhere] xl:text-2xl">{c.pricing.custom}</p>
                   <p className="mt-2 text-sm text-muted-foreground">{c.pricing.customNote}</p>
                 </div>
               )}

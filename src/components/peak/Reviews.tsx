@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { ExternalLink, Star } from "lucide-react";
+import { BadgeCheck, ExternalLink, Star } from "lucide-react";
 import { useCopy } from "@/config/copy";
 import { RECENSIONI } from "@/config/site";
 import { useRevealOnce } from "@/hooks/peak";
@@ -23,6 +23,7 @@ const Reviews = () => {
   const { c, lang } = useCopy();
   const r = c.reviews;
   const [list, setList] = useState<Review[]>([]);
+  const [ratings, setRatings] = useState<number[]>([]);
   const [f, setF] = useState({ name: "", role: "", text: "", rating: 5, consent: false, trap: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error" | "invalid">("idle");
   const gridRef = useRef<HTMLUListElement>(null);
@@ -40,6 +41,8 @@ const Reviews = () => {
           .order("created_at", { ascending: false })
           .limit(6);
         if (alive && data) setList(data as Review[]);
+        const all = await supabase.from("reviews").select("rating").eq("status", "approved").limit(1000);
+        if (alive && all.data) setRatings(all.data.map((x: { rating: number }) => x.rating));
       } catch {
         /* senza rete la sezione mostra solo il modulo */
       }
@@ -69,6 +72,12 @@ const Reviews = () => {
     }
   };
 
+  const total = ratings.length;
+  const dist = [5, 4, 3, 2, 1].map((n) => ({ n, v: ratings.filter((x) => x === n).length }));
+  const avg = total ? ratings.reduce((a, b) => a + b, 0) / total : 0;
+  const pct5 = total ? Math.round((dist[0].v / total) * 100) : 0;
+  const nf = (n: number) => n.toLocaleString(lang === "en" ? "en-GB" : "it-IT", { maximumFractionDigits: 1, minimumFractionDigits: 1 });
+
   const links = [
     { href: RECENSIONI.google, label: r.google },
     { href: RECENSIONI.trustpilot, label: r.trustpilot },
@@ -81,6 +90,42 @@ const Reviews = () => {
       <div className="wrap">
         <SectionHead id="recensioni" kicker={r.kicker} quota={2650} title={r.title} intro={r.intro} />
 
+        <div className="grid gap-5 lg:grid-cols-12">
+          <div className="surface flex flex-col justify-between p-6 lg:col-span-4">
+            <div>
+              <p className="hud text-muted-foreground">{r.avg}</p>
+              <p className="mt-2 font-display text-6xl font-extrabold tracking-tight">{total ? nf(avg) : "0,0"}<span className="text-2xl text-muted-foreground"> / 5</span></p>
+              <div className="mt-3"><Stars n={Math.round(avg)} /></div>
+            </div>
+            <dl className="mt-6 grid grid-cols-2 gap-3 text-sm">
+              <div className="rounded-xl border border-border p-3"><dt className="text-muted-foreground">{r.count(total).replace(/^\d+ /, "")}</dt><dd className="font-display text-2xl font-extrabold">{total}</dd></div>
+              <div className="rounded-xl border border-border p-3"><dt className="text-muted-foreground">{r.five}</dt><dd className="font-display text-2xl font-extrabold">{total ? `${pct5}%` : "0%"}</dd></div>
+            </dl>
+          </div>
+          <div className="surface p-6 lg:col-span-8">
+            <h3 className="font-display text-xl font-extrabold">{r.chartTitle}</h3>
+            {total === 0 && <p className="mt-2 text-sm text-muted-foreground">{r.chartNone}</p>}
+            <ul className="mt-4 space-y-3" aria-label={r.chartTitle}>
+              {dist.map(({ n, v }) => (
+                <li key={n} className="flex items-center gap-3">
+                  <span className="flex w-14 shrink-0 items-center gap-1 text-sm font-semibold">{n}<Star aria-hidden className="h-4 w-4 fill-[hsl(var(--cyan))] text-[hsl(var(--cyan))]" /></span>
+                  <span className="h-3 flex-1 overflow-hidden rounded-full bg-muted/60" aria-hidden>
+                    <span className="block h-full rounded-full bg-[hsl(var(--cyan))] transition-[width] duration-700" style={{ width: total ? `${(v / total) * 100}%` : "0%" }} />
+                  </span>
+                  <span className="w-8 shrink-0 text-right text-sm tabular-nums">{v}<span className="sr-only"> {r.star(n)}</span></span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <ul className="mt-5 flex flex-wrap gap-2" aria-label={r.stepsTitle}>
+          {r.trust.map((t: string) => (
+            <li key={t} className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm"><BadgeCheck aria-hidden className="h-4 w-4 text-[hsl(var(--cyan))]" />{t}</li>
+          ))}
+        </ul>
+
+        <div className="mt-8">
         {list.length > 0 ? (
           <ul ref={gridRef} className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {list.map((x, i) => (
@@ -101,6 +146,21 @@ const Reviews = () => {
         ) : (
           <p className="surface max-w-2xl p-6 text-lg text-muted-foreground">{r.empty}</p>
         )}
+        </div>
+
+        <div className="surface mt-8 p-6 md:p-8">
+          <h3 className="font-display text-2xl font-extrabold">{r.stepsTitle}</h3>
+          <ol className="mt-5 grid gap-4 md:grid-cols-3">
+            {r.steps.map((s: { t: string; d: string }, i: number) => (
+              <li key={s.t} className="rounded-2xl border border-border p-5">
+                <span className="hud text-[hsl(var(--cyan))]">0{i + 1}</span>
+                <p className="mt-1 font-display text-xl font-extrabold">{s.t}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{s.d}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-4 text-sm text-muted-foreground">{r.pending}</p>
+        </div>
 
         <div className="surface mt-10 grid gap-8 p-6 md:p-8 lg:grid-cols-12">
           <div className="lg:col-span-4">

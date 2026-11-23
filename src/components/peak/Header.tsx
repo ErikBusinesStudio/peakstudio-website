@@ -61,6 +61,7 @@ const Header = () => {
   const links = [
     { id: "servizi", label: c.nav.servizi },
     { id: "lavori", label: c.nav.lavori },
+    { id: "recensioni", label: c.nav.recensioni },
     { id: "portfolio", label: "Portfolio", href: "/portfolio" },
     { id: "prezzi", label: c.nav.prezzi },
     { id: "chi-sono", label: c.nav.chi },
