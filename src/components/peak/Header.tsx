@@ -16,7 +16,7 @@ const LangSwitch = () => {
           onClick={() => setLang(l)}
           aria-pressed={lang === l}
           lang={l}
-          className={`min-h-[36px] min-w-[40px] rounded-full px-2 font-semibold transition-colors ${
+          className={`min-h-[44px] min-w-[44px] rounded-full px-2 font-semibold transition-colors ${
             lang === l ? "bg-foreground text-background" : "text-foreground hover:bg-secondary"
           }`}
         >
@@ -79,7 +79,7 @@ const Header = () => {
         style={{ backgroundColor: scrolled ? "hsl(var(--snow) / 0.9)" : "hsl(var(--snow) / 0.55)", backdropFilter: "blur(14px)" }}
       >
         <div className="wrap flex h-16 items-center justify-between gap-4 md:h-20">
-          <Link to="/" onClick={onLogo} aria-label={c.nav.home} className="shrink-0">
+          <Link to="/" onClick={onLogo} aria-label={c.nav.home} className="inline-flex min-h-[44px] shrink-0 items-center">
             <img src={logoDark} alt="Peak Studio" width={320} height={136} className="h-9 w-auto md:h-11" />
           </Link>
 

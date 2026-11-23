@@ -13,6 +13,7 @@ import Contact from "@/components/peak/Contact";
 import Footer from "@/components/peak/Footer";
 import Altimeter from "@/components/peak/Altimeter";
 import CookieBanner from "@/components/peak/CookieBanner";
+import WhatsAppFab from "@/components/peak/WhatsAppFab";
 import Crevasse from "@/components/peak/fx/Crevasse";
 import Marquee from "@/components/peak/fx/Marquee";
 import Preloader from "@/components/peak/fx/Preloader";
@@ -63,6 +64,7 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppFab />
       <CookieBanner />
       <Suspense fallback={null}>
         {fine && !reduced && <Cursor />}

@@ -132,6 +132,7 @@ export const SERVIZI_DETTAGLIO: ServizioDettaglio[] = [
       { q: { it: "Posso partire dal logo che ho?", en: "Can we start from my current logo?" }, a: { it: "Sì, a volte basta rinnovarlo invece di rifarlo.", en: "Yes, sometimes a refresh is enough." } },
       { q: { it: "In che formati lo ricevo?", en: "Which formats do I get?" }, a: { it: "Formati per stampa e per web, con fondo chiaro e scuro.", en: "Print and web formats, for light and dark backgrounds." } },
       { q: { it: "Il logo è mio?", en: "Do I own the logo?" }, a: { it: "Sì, una volta consegnato è tuo.", en: "Yes, once delivered it's yours." } },
+      { q: { it: "Quanto costa?", en: "How much is it?" }, a: { it: "Il solo logo parte da 150 €, il logo con immagine coordinata da 290 €, l'identità completa con nome e dominio da 590 €.", en: "The logo alone starts at €150, the logo with brand image at €290, the complete identity with name and domain at €590." } },
     ],
     correlati: ["vetrina", "landing", "google"],
   },
@@ -242,7 +243,7 @@ export const SERVIZI_DETTAGLIO: ServizioDettaglio[] = [
       { t: { it: "Richieste", en: "Requests" }, d: { it: "Mi scrivi le modifiche e le applico.", en: "You send me changes and I apply them." } },
     ],
     faq: [
-      { q: { it: "Quanto costa?", en: "How much is it?" }, a: { it: "50 € al mese.", en: "€50 per month." } },
+      { q: { it: "Quanto costa?", en: "How much is it?" }, a: { it: "60 € al mese.", en: "€60 per month." } },
       { q: { it: "Chi fa le modifiche?", en: "Who makes changes?" }, a: { it: "Le faccio io: mi scrivi cosa cambiare.", en: "I do: tell me what to change." } },
       { q: { it: "È obbligatoria?", en: "Is it mandatory?" }, a: { it: "Ne parliamo nel preventivo in base alle tue esigenze.", en: "We discuss it in the quote based on your needs." } },
     ],

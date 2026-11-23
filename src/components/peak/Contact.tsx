@@ -56,12 +56,12 @@ const Contact = () => {
               <li className="flex items-center gap-3">
                 <Phone aria-hidden className="h-5 w-5 shrink-0 text-[hsl(var(--cyan))]" />
                 <span className="sr-only">{c.contact.phone}</span>
-                <a href={`tel:${CONTATTI.telefono.replace(/\s/g, "")}`} className="underline underline-offset-4">{CONTATTI.telefono}</a>
+                <a href={`tel:${CONTATTI.telefono.replace(/\s/g, "")}`} className="inline-block py-2 underline underline-offset-4">{CONTATTI.telefono}</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail aria-hidden className="h-5 w-5 shrink-0 text-[hsl(var(--cyan))]" />
                 <span className="sr-only">Email</span>
-                <a href={`mailto:${CONTATTI.email}`} className="break-all underline underline-offset-4">{CONTATTI.email}</a>
+                <a href={`mailto:${CONTATTI.email}`} className="inline-block break-all py-2 underline underline-offset-4">{CONTATTI.email}</a>
               </li>
             </ul>
             <p className="mt-6 text-sm text-muted-foreground">{c.contact.reply}</p>
@@ -86,7 +86,7 @@ const Contact = () => {
             <div className="flex flex-wrap gap-2">
               {c.contact.types.map((t) => (
                 <button key={t} type="button" aria-pressed={tipo === t} onClick={() => setTipo(tipo === t ? "" : t)}
-                  className={`rounded-full border px-4 py-2 text-sm transition-colors ${tipo === t ? "border-[hsl(var(--cyan))] bg-[hsl(var(--cyan)/0.15)]" : "border-[hsl(var(--foreground)/0.25)] hover:border-[hsl(var(--foreground)/0.6)]"}`}>
+                  className={`min-h-[44px] rounded-full border px-4 py-2 text-sm transition-colors ${tipo === t ? "border-[hsl(var(--cyan))] bg-[hsl(var(--cyan)/0.15)]" : "border-[hsl(var(--foreground)/0.25)] hover:border-[hsl(var(--foreground)/0.6)]"}`}>
                   {t}
                 </button>
               ))}
@@ -113,7 +113,7 @@ const Contact = () => {
           <div className="flex items-start gap-3">
             <input id="cf-privacy" type="checkbox" required checked={f.privacy} onChange={(e) => setF({ ...f, privacy: e.target.checked })} className="mt-1 h-5 w-5 shrink-0 accent-[hsl(var(--cyan))]" />
             <label htmlFor="cf-privacy" className="text-sm text-muted-foreground">
-              {c.contact.privacy} <Link to="/privacy" className="underline underline-offset-4">({c.contact.privacyLink})</Link>
+              {c.contact.privacy} <Link to="/privacy" className="inline-block py-2 underline underline-offset-4">({c.contact.privacyLink})</Link>
             </label>
           </div>
           {err && <p id="cf-err" role="alert" className="text-sm font-semibold text-[hsl(var(--cyan))]">{err}</p>}

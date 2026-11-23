@@ -63,7 +63,8 @@ const Hero = () => {
             </span>
           ))}
         </h1>
-        <p className="mt-8 max-w-xl text-lg text-foreground md:text-xl">{c.hero.sub}</p>
+        <p className="mt-8 font-display text-2xl font-bold tracking-tight text-foreground md:text-3xl">{c.hero.tag}</p>
+        <p className="mt-3 max-w-xl text-lg text-foreground md:text-xl">{c.hero.sub}</p>
         <div className="mt-10 flex flex-wrap gap-3">
           <Cta kind="primary" />
           <Cta kind="secondary" />

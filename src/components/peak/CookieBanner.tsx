@@ -14,13 +14,18 @@ const CookieBanner = () => {
       setShow(true);
     }
   }, []);
+  useEffect(() => {
+    if (!show) return;
+    document.documentElement.dataset.cookie = "open";
+    return () => { delete document.documentElement.dataset.cookie; };
+  }, [show]);
   const choose = (v: "accepted" | "rejected") => {
     try { window.sessionStorage.setItem(KEY, v); } catch { /* ignore */ }
     setShow(false);
   };
   if (!show) return null;
   return (
-    <div role="region" aria-label={c.cookie.label} className="zone-snow fixed inset-x-3 bottom-3 z-[60] rounded-2xl border border-border p-4 shadow-2xl md:inset-x-auto md:left-6 md:max-w-md md:p-5">
+    <div role="region" aria-label={c.cookie.label} className="zone-snow fixed inset-x-3 bottom-3 z-[60] rounded-2xl border border-border p-4 shadow-2xl md:inset-x-auto md:right-6 md:max-w-md md:p-5">
       <p className="text-sm">
         {c.cookie.text}{" "}
         <Link to="/cookie" className="font-semibold underline underline-offset-4">{c.cookie.more}</Link>

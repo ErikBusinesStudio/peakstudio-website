@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { BarChart3, ChevronDown, Check, Globe2, ImageIcon, Languages, Mail, MapPin, PenLine, Repeat, Search, CalendarCheck, ClipboardList, Workflow } from "lucide-react";
+import { BarChart3, ChevronDown, Check, Globe2, ImageIcon, Languages, MapPin, Repeat, CalendarCheck, ClipboardList, Workflow } from "lucide-react";
 import { useCopy } from "@/config/copy";
-import { ADDON, ADDON_CATEGORIE, DATI_LEGALI, MANUTENZIONE, PIANI, totalePreventivo } from "@/config/site";
+import { ADDON, ADDON_CATEGORIE, DATI_LEGALI, IDENTITA, MANUTENZIONE, PIANI, totalePreventivo } from "@/config/site";
 import SectionHead from "./SectionHead";
 import Cta from "./Cta";
 
 const eur = (n: number | null | undefined) => (n == null ? "" : `${n.toLocaleString("it-IT")} €`);
 const ADDON_ICONS: Record<string, typeof Check> = {
-  gbp: MapPin, seo: Search, analytics: BarChart3, copy: PenLine, lingua: Languages, foto: ImageIcon,
-  prenotazioni: CalendarCheck, moduli: ClipboardList, newsletter: Mail, migrazione: Repeat, automazioni: Workflow,
+  gbp: MapPin, analytics: BarChart3, lingua: Languages, foto: ImageIcon,
+  prenotazioni: CalendarCheck, moduli: ClipboardList, migrazione: Repeat, automazioni: Workflow,
 };
 
 const Pricing = () => {
@@ -25,7 +25,7 @@ const Pricing = () => {
       <div aria-hidden className="tech-grid" />
       <div className="wrap relative">
         <SectionHead id="prezzi" kicker={c.pricing.kicker} quota={2900} title={c.pricing.title} intro={c.pricing.intro} />
-        <ul className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <ul className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
           {PIANI.map((p) => (
             <li key={p.id} className={`surface relative flex flex-col p-6 md:p-8 ${p.consigliato ? "ring-2 ring-[hsl(var(--cyan))]" : ""}`}>
               {p.consigliato && (
@@ -37,7 +37,7 @@ const Pricing = () => {
               {p.prezzoDa != null ? (
                 <p className="mt-4">
                   <span className="hud text-muted-foreground">{c.pricing.from} </span>
-                  <span className="font-display text-5xl font-extrabold tracking-tight">{eur(p.prezzoDa)}</span>
+                  <span className="font-display text-5xl font-extrabold tracking-tight xl:text-4xl">{eur(p.prezzoDa)}</span>
                 </p>
               ) : (
                 <div className="mt-4">
@@ -147,6 +147,26 @@ const Pricing = () => {
               <li key={v.it} className="flex gap-3">
                 <Check aria-hidden className="mt-1 h-4 w-4 shrink-0 text-[hsl(var(--cyan))]" />
                 <span>{v[lang]}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="surface mt-5 p-6 md:p-8">
+          <h3 className="font-display text-2xl font-extrabold">{c.pricing.identity}</h3>
+          <p className="mt-2 text-muted-foreground">{c.pricing.identityIntro}</p>
+          <ul className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {IDENTITA.map((x) => (
+              <li key={x.id} className="rounded-2xl border border-border p-5">
+                <p className="font-display text-xl font-extrabold">{x.nome[lang]}</p>
+                <p className="mt-2">
+                  <span className="hud text-muted-foreground">{c.pricing.from} </span>
+                  <span className="font-display text-3xl font-extrabold">{eur(x.prezzoDa)}</span>
+                </p>
+                <ul className="mt-4 space-y-2 text-sm">
+                  {x.include.map((v) => (
+                    <li key={v.it} className="flex gap-2"><Check aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--cyan))]" /><span>{v[lang]}</span></li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ul>

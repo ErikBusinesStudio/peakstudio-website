@@ -65,6 +65,8 @@ const Thaw = () => {
   const [a, setA] = useState(20);
   const [b, setB] = useState(150);
   const [cc, setC] = useState(3);
+  const [touched, setTouched] = useState(false);
+  const set = (fn: (n: number) => void) => (n: number) => { setTouched(true); fn(n); };
   const result = stimaMensile(a, b, cc);
 
   return (
@@ -73,16 +75,16 @@ const Thaw = () => {
         <SectionHead id="disgelo" kicker={c.thaw.kicker} quota={900} title={c.thaw.title} intro={c.thaw.intro} />
         <div className="grid items-center gap-10 lg:grid-cols-12">
           <div className="surface space-y-8 p-6 md:p-10 lg:col-span-7">
-            <Slider label={c.thaw.a} value={a} min={0} max={100} onChange={setA} />
-            <Slider label={c.thaw.b} value={b} min={10} max={3000} step={10} onChange={setB} suffix=" €" />
-            <Slider label={c.thaw.c} value={cc} min={1} max={10} onChange={setC} />
+            <Slider label={c.thaw.a} value={a} min={0} max={100} onChange={set(setA)} />
+            <Slider label={c.thaw.b} value={b} min={10} max={3000} step={10} onChange={set(setB)} suffix=" €" />
+            <Slider label={c.thaw.c} value={cc} min={1} max={10} onChange={set(setC)} />
             <div className="border-t border-border pt-6">
-              <p className="hud font-semibold text-muted-foreground">{c.thaw.result}</p>
+              <p className="hud font-semibold text-muted-foreground">{touched ? c.thaw.result : c.thaw.resultExample}</p>
               <p className="mt-2 font-display text-5xl font-extrabold tracking-tight md:text-7xl" aria-live="polite">
                 <Odometer value={result} animate={!reduced} /> €
               </p>
               <p className="hud mt-3 normal-case tracking-normal text-muted-foreground">= {c.thaw.formula}</p>
-              <p className="mt-4 text-sm text-muted-foreground">{c.thaw.note}</p>
+              <p className="mt-4 text-sm text-muted-foreground">{touched ? c.thaw.note : c.thaw.example}</p>
             </div>
           </div>
           <div className="flex justify-center lg:col-span-5">

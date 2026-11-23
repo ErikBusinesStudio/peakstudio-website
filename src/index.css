@@ -370,3 +370,9 @@
 @keyframes halo { 0% { transform: scale(.4); opacity: .9; } 100% { transform: scale(1.6); opacity: 0; } }
 .net-label { fill: hsl(var(--ink-dark)); font: 600 13px "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
 .net-spark { fill: hsl(0 0% 100%); filter: drop-shadow(0 0 6px hsl(var(--cyan))); }
+
+/* Banner cookie aperto: il contenuto dell'hero sale sopra il banner e il pulsante WhatsApp si alza */
+@media (max-width: 767px) {
+  html[data-cookie="open"] #top { padding-bottom: 12rem; }
+  html[data-cookie="open"] .wa-fab { bottom: 11.5rem; }
+}

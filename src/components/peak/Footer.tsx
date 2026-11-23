@@ -66,13 +66,13 @@ const Footer = () => {
             {DATI_LEGALI.ditta}
           </p>
           <p className="mt-1 text-sm text-muted-foreground">
-            <a href={`mailto:${CONTATTI.email}`} className="underline underline-offset-4">{CONTATTI.email}</a> · <a href={`tel:${CONTATTI.telefono.replace(/\s/g, "")}`} className="underline underline-offset-4">{CONTATTI.telefono}</a>
+            <a href={`mailto:${CONTATTI.email}`} className="inline-block py-2 underline underline-offset-4">{CONTATTI.email}</a> · <a href={`tel:${CONTATTI.telefono.replace(/\s/g, "")}`} className="inline-block py-2 underline underline-offset-4">{CONTATTI.telefono}</a>
           </p>
         </div>
         <nav aria-label="Legal" className="md:col-span-3">
           <ul className="flex gap-6">
-            <li><Link to="/privacy" className="underline underline-offset-4">{c.footer.privacy}</Link></li>
-            <li><Link to="/cookie" className="underline underline-offset-4">{c.footer.cookie}</Link></li>
+            <li><Link to="/privacy" className="inline-block py-2 underline underline-offset-4">{c.footer.privacy}</Link></li>
+            <li><Link to="/cookie" className="inline-block py-2 underline underline-offset-4">{c.footer.cookie}</Link></li>
           </ul>
         </nav>
         <div className="md:col-span-4">

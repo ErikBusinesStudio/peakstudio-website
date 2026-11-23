@@ -53,7 +53,7 @@ export const PIANI: Piano[] = [
   {
     id: "starter",
     nome: "Starter",
-    prezzoDa: 250,
+    prezzoDa: 390,
     include: [
       { it: "Sito a pagina singola", en: "Single-page website" },
       { it: "Design su misura, adatto a ogni schermo", en: "Custom design for every screen" },
@@ -63,7 +63,7 @@ export const PIANI: Piano[] = [
   {
     id: "business",
     nome: "Business",
-    prezzoDa: 590,
+    prezzoDa: 790,
     consigliato: true,
     include: [
       { it: "Fino a 5 pagine", en: "Up to 5 pages" },
@@ -75,11 +75,21 @@ export const PIANI: Piano[] = [
   {
     id: "premium",
     nome: "Premium",
-    prezzoDa: 1290,
+    prezzoDa: 1490,
     include: [
       { it: "Pagine illimitate", en: "Unlimited pages" },
       { it: "Animazioni e sezioni avanzate", en: "Advanced animations and sections" },
       { it: "Prenotazioni o richieste online", en: "Online bookings or requests" },
+    ],
+  },
+  {
+    id: "ecommerce",
+    nome: "E-commerce",
+    prezzoDa: 1200,
+    include: [
+      { it: "Catalogo prodotti", en: "Product catalogue" },
+      { it: "Carrello e pagamenti online", en: "Cart and online payments" },
+      { it: "Gestione di ordini e spedizioni", en: "Order and shipping management" },
     ],
   },
   {
@@ -114,16 +124,13 @@ export type Addon = {
 
 export const ADDON: Addon[] = [
   { id: "gbp", cat: "visibilita", prezzo: 40, nome: { it: "Scheda Google Business", en: "Google Business Profile" }, desc: { it: "Ti trovano su Maps con orari, foto e indicazioni.", en: "Be found on Maps with hours, photos and directions." } },
-  { id: "seo", cat: "visibilita", prezzo: null, nome: { it: "SEO avanzata", en: "Advanced SEO" }, desc: { it: "Ricerca delle parole chiave e pagine pensate per salire su Google.", en: "Keyword research and pages built to climb on Google." } },
-  { id: "analytics", cat: "visibilita", prezzo: null, nome: { it: "Statistiche e conversioni", en: "Analytics and conversions" }, desc: { it: "Sai quante persone ti trovano e quante ti contattano.", en: "Know how many people find you and how many get in touch." } },
-  { id: "copy", cat: "contenuti", prezzo: null, nome: { it: "Testi professionali", en: "Professional copywriting" }, desc: { it: "Scrivo io i testi delle pagine, chiari e su misura.", en: "I write the page copy, clear and tailored." } },
-  { id: "lingua", cat: "contenuti", prezzo: null, inclusoIn: ["business"], nome: { it: "Lingua aggiuntiva", en: "Extra language" }, desc: { it: "Il sito anche in un'altra lingua per chi arriva da fuori.", en: "The site in another language for visitors from abroad." } },
-  { id: "foto", cat: "contenuti", prezzo: null, nome: { it: "Selezione immagini", en: "Image selection" }, desc: { it: "Scelgo e preparo immagini adatte alla tua attività.", en: "I pick and prepare images that suit your business." } },
-  { id: "prenotazioni", cat: "funzioni", prezzo: null, inclusoIn: ["premium"], nome: { it: "Prenotazioni online", en: "Online bookings" }, desc: { it: "Appuntamenti e richieste senza telefonate.", en: "Appointments and requests without phone calls." } },
-  { id: "moduli", cat: "funzioni", prezzo: null, nome: { it: "Moduli di preventivo", en: "Quote request forms" }, desc: { it: "Domande guidate che ti portano richieste già complete.", en: "Guided questions that bring you complete requests." } },
-  { id: "newsletter", cat: "funzioni", prezzo: null, nome: { it: "Newsletter", en: "Newsletter" }, desc: { it: "Raccogli contatti e scrivi ai tuoi clienti.", en: "Collect contacts and write to your customers." } },
-  { id: "migrazione", cat: "crescita", prezzo: null, nome: { it: "Migrazione dal vecchio sito", en: "Migration from your old site" }, desc: { it: "Porto contenuti e indirizzo senza perdere nulla.", en: "I move content and address without losing anything." } },
-  { id: "automazioni", cat: "crescita", prezzo: null, nome: { it: "Automazioni e CRM", en: "Automations and CRM" }, desc: { it: "Le richieste arrivano dove lavori già, senza copia-incolla.", en: "Requests land where you already work, no copy-paste." } },
+  { id: "analytics", cat: "visibilita", prezzo: 60, nome: { it: "Statistiche e conversioni", en: "Analytics and conversions" }, desc: { it: "Sai quante persone ti trovano e quante ti contattano.", en: "Know how many people find you and how many get in touch." } },
+  { id: "lingua", cat: "contenuti", prezzo: 90, inclusoIn: ["business"], nome: { it: "Lingua aggiuntiva", en: "Extra language" }, desc: { it: "Il sito anche in un'altra lingua per chi arriva da fuori.", en: "The site in another language for visitors from abroad." } },
+  { id: "foto", cat: "contenuti", prezzo: 40, nome: { it: "Selezione immagini", en: "Image selection" }, desc: { it: "Scelgo e preparo immagini adatte alla tua attività.", en: "I pick and prepare images that suit your business." } },
+  { id: "prenotazioni", cat: "funzioni", prezzo: 150, inclusoIn: ["premium"], nome: { it: "Prenotazioni online", en: "Online bookings" }, desc: { it: "Appuntamenti e richieste senza telefonate.", en: "Appointments and requests without phone calls." } },
+  { id: "moduli", cat: "funzioni", prezzo: 90, nome: { it: "Moduli di preventivo", en: "Quote request forms" }, desc: { it: "Domande guidate che ti portano richieste già complete.", en: "Guided questions that bring you complete requests." } },
+  { id: "migrazione", cat: "crescita", prezzo: 150, nome: { it: "Migrazione dal vecchio sito", en: "Migration from your old site" }, desc: { it: "Porto contenuti e indirizzo senza perdere nulla.", en: "I move content and address without losing anything." } },
+  { id: "automazioni", cat: "crescita", prezzo: 190, nome: { it: "Automazioni e CRM", en: "Automations and CRM" }, desc: { it: "Le richieste arrivano dove lavori già, senza copia-incolla.", en: "Requests land where you already work, no copy-paste." } },
 ];
 
 /** Totale una tantum: piano (se ha un prezzo) + aggiunte con prezzo non già incluse nel piano. */
@@ -140,8 +147,33 @@ export const totalePreventivo = (pianoId: string, addonIds: string[]) => {
   return { totale, daDefinire };
 };
 
+/** Identità digitale: nome, logo e immagine coordinata. Prezzi di partenza (IVA esclusa se dovuta). */
+export type PacchettoIdentita = { id: string; nome: L; prezzoDa: number; include: L[] };
+export const IDENTITA: PacchettoIdentita[] = [
+  { id: "nome", nome: { it: "Nome e dominio", en: "Name and domain" }, prezzoDa: 90, include: [
+    { it: "Ricerca del nome per la tua attività", en: "Name research for your business" },
+    { it: "Verifica della disponibilità del dominio", en: "Domain availability check" },
+  ] },
+  { id: "logo", nome: { it: "Logo", en: "Logo" }, prezzoDa: 150, include: [
+    { it: "Più proposte tra cui scegliere", en: "Several proposals to choose from" },
+    { it: "Versioni a colori e in bianco e nero", en: "Colour and black-and-white versions" },
+    { it: "File per web e stampa", en: "Files for web and print" },
+  ] },
+  { id: "coordinata", nome: { it: "Logo e immagine coordinata", en: "Logo and brand image" }, prezzoDa: 290, include: [
+    { it: "Logo con palette colori e caratteri", en: "Logo with colour palette and typefaces" },
+    { it: "Immagine profilo e copertina per i social", en: "Profile image and cover for social media" },
+    { it: "Icona del sito (favicon)", en: "Site icon (favicon)" },
+  ] },
+  { id: "completa", nome: { it: "Identità completa", en: "Complete identity" }, prezzoDa: 590, include: [
+    { it: "Ricerca del nome e verifica del dominio", en: "Name research and domain check" },
+    { it: "Logo, palette colori e caratteri", en: "Logo, colour palette and typefaces" },
+    { it: "Kit social: profilo, copertina e primi post", en: "Social kit: profile, cover and first posts" },
+    { it: "Regole d'uso essenziali del marchio", en: "Essential brand usage rules" },
+  ] },
+];
+
 export const MANUTENZIONE = {
-  prezzoMese: 50,
+  prezzoMese: 60,
   include: [
     { it: "Aggiornamenti grafici e tecnici", en: "Design and technical updates" },
     { it: "Backup mensile completo su server esterno", en: "Full monthly backup on an external server" },
@@ -153,7 +185,7 @@ export const MANUTENZIONE = {
 export const SERVIZI: { id: string; titolo: L; desc: L; img: string }[] = [
   { id: "vetrina", titolo: { it: "Siti vetrina", en: "Showcase websites" }, desc: { it: "Il biglietto da visita online della tua attività, chiaro e veloce.", en: "Your business card online, clear and fast." }, img: svcVetrina },
   { id: "landing", titolo: { it: "Landing page", en: "Landing pages" }, desc: { it: "Una pagina sola, un obiettivo: farti contattare.", en: "One page, one goal: getting you contacted." }, img: svcLanding },
-  { id: "logo", titolo: { it: "Logo e identità visiva", en: "Logo and visual identity" }, desc: { it: "Un segno riconoscibile, coerente su sito, insegna e social.", en: "A recognisable mark, consistent on web, signage and social." }, img: svcLogo },
+  { id: "logo", titolo: { it: "Identità digitale", en: "Digital identity" }, desc: { it: "Nome, logo e immagine coordinata, coerenti su sito, insegna e social.", en: "Name, logo and brand image, consistent on web, signage and social." }, img: svcLogo },
   { id: "dominio", titolo: { it: "Dominio, hosting ed email professionali", en: "Domain, hosting and business email" }, desc: { it: "Ci penso io: indirizzo tuo, email con il tuo nome.", en: "I take care of it: your own address and branded email." }, img: svcDominio },
   { id: "google", titolo: { it: "Scheda Google Business", en: "Google Business Profile" }, desc: { it: "Ti trovano su Maps con orari, foto e indicazioni.", en: "Be found on Maps with hours, photos and directions." }, img: svcGoogle },
   { id: "manutenzione", titolo: { it: "Manutenzione mensile", en: "Monthly maintenance" }, desc: { it: "Il sito resta aggiornato, sicuro e con backup.", en: "Your site stays updated, secure and backed up." }, img: svcManutenzione },
