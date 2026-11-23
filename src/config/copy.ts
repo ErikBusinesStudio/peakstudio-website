@@ -209,6 +209,7 @@ export const COPY = {
     footer: {
       privacy: "Privacy",
       cookie: "Cookie Policy",
+      admin: "Area riservata",
       mountain: "Montagna dell'ora",
       photo: "Foto",
       local: "ora locale",
@@ -429,6 +430,7 @@ export const COPY = {
     footer: {
       privacy: "Privacy",
       cookie: "Cookie Policy",
+      admin: "Private area",
       mountain: "Mountain of the hour",
       photo: "Photo",
       local: "local time",

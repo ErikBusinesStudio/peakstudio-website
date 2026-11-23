@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Lock } from "lucide-react";
 import logoLight from "@/assets/logo-light.webp";
 import { useCopy } from "@/config/copy";
 import { CONTATTI, DATI_LEGALI } from "@/config/site";
@@ -73,6 +74,7 @@ const Footer = () => {
           <ul className="flex gap-6">
             <li><Link to="/privacy" className="inline-block py-2 underline underline-offset-4">{c.footer.privacy}</Link></li>
             <li><Link to="/cookie" className="inline-block py-2 underline underline-offset-4">{c.footer.cookie}</Link></li>
+            <li><Link to="/admin/login" rel="nofollow" className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs text-muted-foreground hover:text-foreground"><Lock aria-hidden className="h-3 w-3" />{c.footer.admin}</Link></li>
           </ul>
         </nav>
         <div className="md:col-span-4">
