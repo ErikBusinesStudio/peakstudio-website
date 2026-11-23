@@ -221,7 +221,7 @@ export const CASI_PORTFOLIO: Caso[] = [
 /** Link per lasciare una recensione fuori dal sito. Lascia "" finché non hai la pagina: il link non compare. */
 export const RECENSIONI = {
   google: "https://g.page/r/Cc0d8aKRcwcLEBM/review",
-  trustpilot: "",
+  trustpilot: "https://www.trustpilot.com/evaluate/peakstudio.click",
 };
 
 /** Vuoto finché non arrivano recensioni reali: la sezione resta nascosta. */
